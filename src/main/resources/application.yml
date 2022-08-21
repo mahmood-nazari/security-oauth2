@@ -1,0 +1,30 @@
+server:
+  port: 8585
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 789
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 735884143f333bfc5110
+            clientSecret:  ef11763e46e05400de9b259e86dfbc60a2affc6b
+            scope:
+              - email
+              - profile
+
+          google:
+            clientId: 466465211256-9802v7udg12a3kurmbp6ur2ttt7pfhop.apps.googleusercontent.com
+            clientSecret: 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
+            scope:
+              - email
+              - profile
