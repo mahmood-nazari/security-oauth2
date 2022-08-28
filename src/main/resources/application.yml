@@ -17,7 +17,7 @@ spring:
         registration:
           github:
             clientId: 735884143f333bfc5110
-            clientSecret:  ef11763e46e05400de9b259e86dfbc60a2affc6b
+            clientSecret:  80dc5102c243214ee9343294487820f6e303e4ef
             scope:
               - email
               - profile

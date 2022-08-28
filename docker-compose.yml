@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  security-server:
+    container_name: security-server
+    image: security:latest
+    environment:
+      SERVER_PORT: 8778
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/postgres
+      SPRING_DATASOURCE_USERNAME: custom_postgres
+      SPRING_DATASOURCE_PASSWORD: 123
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "8778:8778"
+
+    restart: on-failure
+    depends_on:
+      - postgresql
+    networks:
+      - security-network
+
+  postgres-db:
+    container_name: security-postgres
+    image: postgres:latest
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: custom_postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: postgres
+
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - security-network
+
+
+networks:
+  security-network:
+
+volumes:
+  postgresql:
+  postgresql_data:

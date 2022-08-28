@@ -16,6 +16,11 @@ public class SampleController {
         return "hello";
     }
 
+    @GetMapping("/success")
+    public String success(){
+        return "successfully oauth2 protocol";
+    }
+
     @GetMapping("hello")
     public String hello(){
         return "hello world";
